@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cgp-site-upload">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/cgp-site-upload.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

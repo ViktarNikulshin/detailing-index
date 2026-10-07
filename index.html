@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGP-DETAILING | Детейлинг центр в Минске</title>
+
+    <!-- ИКОНКИ САЙТА (логотип CGP) -->
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#1a1a1b">
+
+    <!-- Подключение шрифтов Michroma и Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ФИРМЕННАЯ ПАЛИТРА И НАСТРОЙКИ CGP */
+        :root {
+            --bg-color: #1a1a1b;       /* Основной темный фон */
+            --surface-color: #333634;  /* Цвет плашек и карточек */
+            --accent-color: #147746;   /* Фирменный зеленый CGP */
+            --accent-hover: #10623a;   /* Темно-зеленый для наведения */
+            --text-main: #e5e5e5;      /* Светло-серый текст */
+            --text-muted: #a0a0a0;     /* Дополнительный текст */
+            --font-heading: 'Michroma', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+            --border-radius: 12px;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* БАЗОВЫЕ СТИЛИ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, .logo-font {
+            font-family: var(--font-heading);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* КНОПКИ */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 18px 38px;
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(20, 119, 70, 0.4);
+        }
+
+        /* ШАПКА / КОНТАКТЫ В ВЕРХНЕМ ПРАВОМ УГЛУ */
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 0;
+            z-index: 10;
+        }
+
+        .header__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* НАВИГАЦИЯ ПО РАЗДЕЛАМ */
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .header__nav-link {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-main);
+            padding: 10px 16px;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+
+        .header__nav-link:hover,
+        .header__nav-link:focus-visible {
+            color: #ffffff;
+            background: rgba(20, 119, 70, 0.25);
+        }
+
+        .header__contacts {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header__link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            transition: var(--transition);
+        }
+
+        .header__link:hover {
+            color: #ffffff;
+            border-color: var(--accent-color);
+            background: rgba(20, 119, 70, 0.25);
+            box-shadow: 0 0 15px rgba(20, 119, 70, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .header__link svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent-color);
+            flex-shrink: 0;
+        }
+
+        .header__phone {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* 1-Я СТРАНИЦА: HERO */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(26, 26, 27, 0.95) 0%, rgba(26, 26, 27, 0.7) 100%), 
+                        url('images/hero.jpg') center/cover no-repeat;
+            padding: 140px 0 70px;
+        }
+        
+        .hero__content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .hero__title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 22px;
+            color: #ffffff;
+        }
+        .hero__title span {
+            color: var(--accent-color);
+        }
+
+        .hero__slogan {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            margin-bottom: 35px;
+            max-width: 700px;
+            font-weight: 500;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 18px;
+        }
+
+        .hero__services-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 45px;
+        }
+
+        .hero__service-tag {
+            background: var(--surface-color);
+            color: var(--text-main);
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            border: 1px solid rgba(229, 229, 229, 0.1);
+            transition: var(--transition);
+        }
+        .hero__service-tag:hover {
+            border-color: var(--accent-color);
+            color: #ffffff;
+            background: rgba(20, 119, 70, 0.2);
+        }
+
+        /* ЗАГОЛОВКИ СЕКЦИЙ */
+        .section-title {
+            font-size: 2.4rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 18px auto 0;
+            border-radius: 2px;
+        }
+
+        /* 2-Я СТРАНИЦА: ПОЧЕМУ ВЫБИРАЮТ НАС */
+        .features {
+            padding: 110px 0;
+            position: relative;
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(20, 119, 70, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(20, 119, 70, 0.08) 0%, transparent 40%),
+                repeating-linear-gradient(45deg, #141415 0, #141415 8px, #1a1a1b 8px, #1a1a1b 16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .bento-card {
+            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
+            padding: 35px 30px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .bento-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(20, 119, 70, 0.25);
+        }
+
+        .bento-card--featured {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(20, 119, 70, 0.25) 0%, var(--surface-color) 70%);
+            border: 1px solid rgba(20, 119, 70, 0.4);
+            min-height: 280px;
+        }
+
+        /* ВЕРХНИЙ РЯД В КАРТОЧКЕ */
+        .bento-card__header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .bento-card__icon-wrap {
+            width: 52px;
+            height: 52px;
+            background-color: rgba(20, 119, 70, 0.15);
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        
+        .bento-card:hover .bento-card__icon-wrap {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .bento-card__icon-wrap svg {
+            width: 26px;
+            height: 26px;
+            fill: currentColor;
+        }
+
+        .bento-card__big-number {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--accent-color);
+            flex-shrink: 0;
+            text-shadow: 0 0 20px rgba(20, 119, 70, 0.3);
+        }
+
+        .bento-card__title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.35;
+        }
+
+        .bento-card__text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .bento-card__watermark {
+            position: absolute;
+            right: -20px;
+            bottom: -30px;
+            font-family: var(--font-heading);
+            font-size: 9rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .bento-badge {
+            align-self: flex-start;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        /* 3-Я СТРАНИЦА: УСЛУГИ */
+        .services {
+            padding: 100px 0;
+        }
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+        .service-card:hover {
+            border-color: rgba(20, 119, 70, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .service-card__image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+        .service-card__content {
+            padding: 28px 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .service-card__title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .service-card__text {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        .service-card .btn {
+            width: 100%;
+        }
+
+        /* 4-Я СТРАНИЦА: FAQ */
+        .faq {
+            padding: 100px 0;
+            background-color: #141415;
+        }
+        .faq__list {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        .faq__item {
+            background-color: var(--surface-color);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+        .faq__question {
+            padding: 24px 28px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+        }
+        .faq__question::-webkit-details-marker {
+            display: none;
+        }
+        .faq__question::after {
+            content: '+';
+            font-family: var(--font-heading);
+            font-size: 22px;
+            color: var(--accent-color);
+            margin-left: 15px;
+            transition: var(--transition);
+        }
+        details[open] .faq__question::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+        .faq__answer {
+            padding: 0 28px 28px;
+            color: var(--text-main);
+            font-size: 16px;
+            line-height: 1.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 5px;
+            padding-top: 20px;
+        }
+
+        /* ПОДВАЛ / МЕССЕНДЖЕРЫ И СОЦСЕТИ */
+        .footer {
+            background-color: #0d0d0d;
+            padding: 50px 0;
+            text-align: center;
+            border-top: 1px solid var(--surface-color);
+        }
+        .footer__logo {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        .footer__title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+            font-weight: 600;
+        }
+        .footer__socials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .footer__social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 14px 24px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: var(--transition);
+        }
+        .footer__social-link:hover {
+            color: #ffffff;
+            border-color: var(--accent-color);
+            background: rgba(20, 119, 70, 0.25);
+            box-shadow: 0 0 15px rgba(20, 119, 70, 0.3);
+            transform: translateY(-2px);
+        }
+        .footer__social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent-color);
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        .footer__social-link:hover svg {
+            fill: #ffffff;
+        }
+
+        /* СТИЛИ МОДАЛЬНОГО ОКНА */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: var(--surface-color);
+            width: 100%;
+            max-width: 500px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(20, 119, 70, 0.4);
+            padding: 40px 35px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(20, 119, 70, 0.2);
+            transform: translateY(20px) scale(0.95);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal__close {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            line-height: 1;
+        }
+
+        .modal__close:hover {
+            color: #ffffff;
+        }
+
+        .modal__title {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .modal__subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #1e1e1f;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px 18px;
+            color: #ffffff;
+            font-family: var(--font-body);
+            font-size: 16px;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(20, 119, 70, 0.3);
+            background: #252526;
+        }
+
+        .form-control.error {
+            border-color: #e74c3c;
+        }
+
+        .form-hint {
+            font-size: 12px;
+            color: #e74c3c;
+            margin-top: 6px;
+            display: none;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 95px;
+        }
+
+        .modal .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .modal__status {
+            margin-top: 15px;
+            font-size: 15px;
+            text-align: center;
+            display: none;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .modal__status.success {
+            display: block;
+            background: rgba(20, 119, 70, 0.2);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .modal__status.error-msg {
+            display: block;
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+
+        /* ЗАГЛУШКА ДЛЯ ОТСУТСТВУЮЩЕГО ФОТО */
+        .media-holder.is-empty {
+            background-image: none !important;
+            background: linear-gradient(135deg, #2b2e2c 0%, #1a1a1b 100%);
+            position: relative;
+        }
+
+        .media-holder.is-empty::after {
+            content: 'ФОТО СКОРО';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: rgba(229, 229, 229, 0.28);
+        }
+
+        /* 5-Я СТРАНИЦА: ПРЕЙСКУРАНТ */
+        .prices {
+            padding: 100px 0;
+            background-color: #141415;
+        }
+
+        .prices__lead {
+            max-width: 780px;
+            margin: -30px auto 40px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 17px;
+        }
+
+        .prices__toolbar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+
+        .prices__search {
+            width: 100%;
+            max-width: 420px;
+            background: var(--surface-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 14px 24px;
+            color: #ffffff;
+            font-family: var(--font-body);
+            font-size: 15px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .prices__search:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 12px rgba(20, 119, 70, 0.3);
+        }
+
+        .prices__search::placeholder {
+            color: var(--text-muted);
+        }
+
+        .prices__tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 4px 4px 14px;
+            margin-bottom: 30px;
+            scrollbar-width: thin;
+        }
+
+        .prices__tabs::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .prices__tabs::-webkit-scrollbar-thumb {
+            background: rgba(20, 119, 70, 0.5);
+            border-radius: 3px;
+        }
+
+        .prices__tab {
+            white-space: nowrap;
+            padding: 13px 22px;
+            border-radius: 30px;
+            background-color: var(--surface-color);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .prices__tab:hover {
+            border-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .prices__tab.active {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #ffffff;
+            box-shadow: 0 0 18px rgba(20, 119, 70, 0.35);
+        }
+
+        .price-group {
+            margin-bottom: 45px;
+        }
+
+        .price-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .price-group__title {
+            font-size: 1.35rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .price-group__desc {
+            color: var(--text-muted);
+            font-size: 15.5px;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+
+        .price-group__subtitle {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            margin: 30px 0 14px;
+        }
+
+        .price-table-wrap {
+            overflow-x: auto;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background-color: var(--surface-color);
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 15.5px;
+            vertical-align: top;
+        }
+
+        .price-table thead th {
+            background: rgba(20, 119, 70, 0.18);
+            color: #ffffff;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            border-bottom: 1px solid rgba(20, 119, 70, 0.35);
+        }
+
+        .price-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .price-table tbody tr:hover {
+            background: rgba(20, 119, 70, 0.07);
+        }
+
+        .price-table__name {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .price-table__value {
+            white-space: nowrap;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .price-table__value.is-empty {
+            color: rgba(160, 160, 160, 0.4);
+            font-weight: 400;
+        }
+
+        .price-table__note {
+            display: block;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .prices__status {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+        }
+
+        .prices__empty {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 50px 20px;
+            font-size: 16px;
+        }
+
+        .prices__footer {
+            margin-top: 45px;
+            text-align: center;
+            background: var(--surface-color);
+            border: 1px solid rgba(20, 119, 70, 0.3);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+        }
+
+        .prices__footer-text {
+            color: var(--text-main);
+            font-size: 17px;
+            margin-bottom: 22px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 6-Я СТРАНИЦА: КОНТАКТЫ */
+        .contacts {
+            padding: 100px 0;
+        }
+
+        .contacts__grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .contacts__card {
+            background-color: var(--surface-color);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--border-radius);
+            padding: 35px 32px;
+        }
+
+        .contacts__intro {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .contact-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .contact-row__icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            background: rgba(20, 119, 70, 0.15);
+            border: 1px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .contact-row:hover .contact-row__icon {
+            background: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .contact-row__icon svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .contact-row__label {
+            font-size: 12.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .contact-row__value {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 1.5;
+        }
+
+        .contact-row__value a:hover {
+            color: var(--accent-color);
+        }
+
+        .contacts__chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .contacts__chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 10px 18px;
+            transition: var(--transition);
+        }
+
+        .contacts__chip:hover {
+            color: #ffffff;
+            border-color: var(--accent-color);
+            background: rgba(20, 119, 70, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .contacts__chip svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--accent-color);
+            flex-shrink: 0;
+        }
+
+        .contacts__chip:hover svg {
+            fill: #ffffff;
+        }
+
+        .contacts__actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contacts__map {
+            background-color: var(--surface-color);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--border-radius);
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .contacts__map iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 8px;
+            display: block;
+            filter: grayscale(0.3) contrast(1.05);
+        }
+
+        .contacts__map-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+            background: rgba(20, 119, 70, 0.15);
+            border: 1px solid rgba(20, 119, 70, 0.45);
+            border-radius: 8px;
+            padding: 14px 20px;
+            transition: var(--transition);
+        }
+
+        .contacts__map-link:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .contacts__map-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .contacts__advantages {
+            display: grid;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .contacts__advantage {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 15.5px;
+            color: var(--text-main);
+        }
+
+        .contacts__advantage::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 992px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bento-card--featured {
+                grid-column: span 2;
+            }
+            .contacts__grid {
+                grid-template-columns: 1fr;
+            }
+            .header__nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Скрытие слова "ЛЕТ" на мобильных устройствах */
+            .hide-mobile {
+                display: none;
+            }
+
+            .header__container {
+                justify-content: center;
+                gap: 10px;
+            }
+            .header__link {
+                font-size: 13px;
+                padding: 10px 16px;
+            }
+            .hero {
+                padding-top: 150px;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .bento-card--featured {
+                grid-column: span 1;
+            }
+            .hero__title {
+                font-size: 2.4rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .bento-card__big-number {
+                font-size: 2.8rem;
+            }
+            .footer__socials {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .footer__social-link {
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+            .prices,
+            .contacts,
+            .services,
+            .faq {
+                padding: 70px 0;
+            }
+            .contacts__card {
+                padding: 28px 22px;
+            }
+            .contacts__actions .btn,
+            .prices__footer .btn {
+                width: 100%;
+            }
+            .contacts__map iframe {
+                height: 280px;
+            }
+        }
+
+        /* ПРАЙС НА МОБИЛЬНЫХ: ТАБЛИЦА ПРЕВРАЩАЕТСЯ В КАРТОЧКИ */
+        @media (max-width: 720px) {
+            .price-table {
+                min-width: 0;
+            }
+            .price-table thead {
+                display: none;
+            }
+            .price-table tbody tr {
+                display: block;
+                padding: 16px 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .price-table tbody tr:last-child {
+                border-bottom: none;
+            }
+            .price-table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                gap: 16px;
+                padding: 6px 0;
+                border: none;
+                font-size: 15px;
+            }
+            .price-table td::before {
+                content: attr(data-label);
+                color: var(--text-muted);
+                font-size: 13.5px;
+                font-weight: 600;
+                flex-shrink: 0;
+            }
+            .price-table td.price-table__name {
+                font-size: 16.5px;
+                display: block;
+            }
+            .price-table td.price-table__name::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ВЕРХНЯЯ ШАПКА C КОНТАКТАМИ -->
+    <header class="header">
+        <div class="container header__container">
+            <!-- Навигация по разделам -->
+            <nav class="header__nav">
+                <a href="#services" class="header__nav-link">Услуги</a>
+                <a href="#prices" class="header__nav-link">Цены</a>
+                <a href="#faq" class="header__nav-link">Вопросы</a>
+                <a href="#contacts" class="header__nav-link">Контакты</a>
+            </nav>
+
+            <div class="header__contacts">
+            <!-- Ссылка на Яндекс Карты -->
+            <a href="https://yandex.by/maps/-/CTWh6D-2" target="_blank" rel="noopener noreferrer" class="header__link">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>Монтажников 39/3</span>
+            </a>
+            
+            <!-- Кликабельный номер телефона -->
+            <a href="tel:+375293878703" class="header__link header__phone">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span>+375 29 387-87-03</span>
+            </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1-Я СТРАНИЦА: HERO -->
+    <section class="hero" data-bg="images/hero.jpg"
+             data-bg-fallback="linear-gradient(135deg, #101211 0%, #1a1a1b 45%, #0f2419 100%)">
+        <div class="container hero__content">
+            <h1 class="hero__title">CGP-<span>DETAILING</span></h1>
+            <p class="hero__slogan">Сохрани красоту своего автомобиля и инвестируй в его долговечность. Твой выбор для собственной уверенности и сохранения ценности актива.</p>
+            
+            <ul class="hero__services-list">
+                <li class="hero__service-tag">Оклейка</li>
+                <li class="hero__service-tag">Тонировка</li>
+                <li class="hero__service-tag">Антикор</li>
+                <li class="hero__service-tag">Химчистка</li>
+                <li class="hero__service-tag">Полировка</li>
+                <li class="hero__service-tag">Шумоизоляция</li>
+                <li class="hero__service-tag">Локальный ремонт ЛКП</li>
+                <li class="hero__service-tag">Нанесение защитных покрытий</li>
+            </ul>
+
+            <button type="button" class="btn js-open-modal" data-service="Общая запись">Записаться</button>
+        </div>
+    </section>
+
+    <!-- 2-Я СТРАНИЦА: ПОЧЕМУ ВЫБИРАЮТ НАС -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">ПОЧЕМУ ВЫБИРАЮТ НАС?</h2>
+            
+            <div class="bento-grid">
+                
+                <!-- 1. Главная карточка -->
+                <div class="bento-card bento-card--featured">
+                    <div class="bento-card__watermark">CGP</div>
+                    <div>
+                        <span class="bento-badge">Главный фактор доверия</span>
+                        <div class="bento-card__header">
+                            <!-- " ЛЕТ" скроется на экранах <= 768px -->
+                            <div class="bento-card__big-number">15+<span class="hide-mobile"> ЛЕТ</span></div>
+                            <h3 class="bento-card__title">Огромный опыт в сфере детейлинга</h3>
+                        </div>
+                    </div>
+                    <p class="bento-card__text">
+                        Знаем все нюансы работы с ЛКП автомобилей любого класса — от городских седанов до эксклюзивных суперкаров. Наша команда гарантирует идеальный результат.
+                    </p>
+                </div>
+
+                <!-- 2. Полный цикл -->
+                <div class="bento-card">
+                    <div class="bento-card__header">
+                        <div class="bento-card__icon-wrap">
+                            <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.21-1.79-4-4-4S9 3.79 9 6H7c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 15H7V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h2v11z"/></svg>
+                        </div>
+                        <h3 class="bento-card__title">Полный цикл в Минске</h3>
+                    </div>
+                    <p class="bento-card__text">Все услуги в одном месте: от глубокой очистки и полировки ЛКП до оклейки плёнкой и антикора.</p>
+                </div>
+
+                <!-- 3. Точно в срок -->
+                <div class="bento-card">
+                    <div class="bento-card__header">
+                        <div class="bento-card__icon-wrap">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        </div>
+                        <h3 class="bento-card__title">Выдача точно в срок</h3>
+                    </div>
+                    <p class="bento-card__text">Ценим ваше время. Строго соблюдаем оговоренный регламент и выдаем автомобиль без задержек.</p>
+                </div>
+
+                <!-- 4. Профессиональное оборудование -->
+                <div class="bento-card">
+                    <div class="bento-card__header">
+                        <div class="bento-card__icon-wrap">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-5.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                        </div>
+                        <h3 class="bento-card__title">Проф. оборудование</h3>
+                    </div>
+                    <p class="bento-card__text">Используем высокоточные толщиномеры, полировальные системы и сертифицированные составы.</p>
+                </div>
+
+                <!-- 5. Рассрочка -->
+                <div class="bento-card">
+                    <div class="bento-card__header">
+                        <div class="bento-card__icon-wrap">
+                            <svg viewBox="0 0 24 24"><path d="M7.5 11C9.43 11 11 9.43 11 7.5S9.43 4 7.5 4 4 5.57 4 7.5 5.57 11 7.5 11zm0-5C8.33 6 9 6.67 9 7.5S8.33 9 7.5 9 6 8.33 6 7.5 6.67 6 7.5 6zm9 4c1.93 0 3.5-1.57 3.5-3.5S18.43 3 16.5 3 13 4.57 13 6.5s1.57 3.5 3.5 3.5zm0-5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM4 20l14-14 1.41 1.41L5.41 21.41z"/></svg>
+                        </div>
+                        <h3 class="bento-card__title">Рассрочка 0%</h3>
+                    </div>
+                    <p class="bento-card__text">Комфортные условия оплаты с возможностью оформления гибкой рассрочки на любые комплексы.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3-Я СТРАНИЦА: УСЛУГИ -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">НАШИ УСЛУГИ</h2>
+            <div class="services__grid">
+                
+                <div class="service-card">
+                    <div class="service-card__image media-holder" style="background-image: url('images/oklejka.jpg');" data-bg="images/oklejka.jpg"></div>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Оклейка</h3>
+                        <p class="service-card__text">Защита кузова антигравийными полиуретановыми и виниловыми пленками от сколов, пескоструя и царапин.</p>
+                        <button type="button" class="btn js-open-modal" data-service="Оклейка">Записаться</button>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card__image media-holder" style="background-image: url('images/tonirovka.jpg');" data-bg="images/tonirovka.jpg"></div>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Тонировка</h3>
+                        <p class="service-card__text">Профессиональное тонирование стекол атермальными и премиальными темными пленками с соблюдением стандартов.</p>
+                        <button type="button" class="btn js-open-modal" data-service="Тонировка">Записаться</button>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card__image media-holder" style="background-image: url('images/antikor.jpg');" data-bg="images/antikor.jpg"></div>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Антикор</h3>
+                        <p class="service-card__text">Обработка днища, колесных арок и скрытых полостей составами на масляно-восковой основе для защиты от коррозии.</p>
+                        <button type="button" class="btn js-open-modal" data-service="Антикор">Записаться</button>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card__image media-holder" style="background-image: url('images/himchistka.jpg');" data-bg="images/himchistka.jpg"></div>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Химчистка</h3>
+                        <p class="service-card__text">Глубокая очистка кожи, текстиля и пластика салона безопасными гипоаллергенными составами с озонацией.</p>
+                        <button type="button" class="btn js-open-modal" data-service="Химчистка">Записаться</button>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card__image media-holder" style="background-image: url('images/polirovka.jpg');" data-bg="images/polirovka.jpg"></div>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Полировка</h3>
+                        <p class="service-card__text">Устранение царапин, паутинки и восстановление глубокого первозданного блеска лакокрасочного покрытия.</p>
+                        <button type="button" class="btn js-open-modal" data-service="Полировка">Записаться</button>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card__image media-holder" style="background-image: url('images/shumoizolyaciya.jpg');" data-bg="images/shumoizolyaciya.jpg"></div>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Шумоизоляция</h3>
+                        <p class="service-card__text">Комплексная вибро- и шумоизоляция кузова и салона для максимального акустического комфорта в поездках.</p>
+                        <button type="button" class="btn js-open-modal" data-service="Шумоизоляция">Записаться</button>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card__image media-holder" style="background-image: url('images/remont-lkp.jpg');" data-bg="images/remont-lkp.jpg"></div>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Локальный ремонт ЛКП</h3>
+                        <p class="service-card__text">Аккуратное устранение точечных сколов, глубоких царапин и потертостей без полной перекраски детали.</p>
+                        <button type="button" class="btn js-open-modal" data-service="Локальный ремонт ЛКП">Записаться</button>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-card__image media-holder" style="background-image: url('images/zashchitnye-pokrytiya.jpg');" data-bg="images/zashchitnye-pokrytiya.jpg"></div>
+                    <div class="service-card__content">
+                        <h3 class="service-card__title">Защитные покрытия</h3>
+                        <p class="service-card__text">Нанесение нанокерамики и жидкого стекла. Выраженный гидрофобный эффект и защита от выгорания на солнце.</p>
+                        <button type="button" class="btn js-open-modal" data-service="Защитные покрытия">Записаться</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4-Я СТРАНИЦА: FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h2>
+            <div class="faq__list">
+                
+                <details class="faq__item">
+                    <summary class="faq__question">Сколько времени занимает полная полировка кузова?</summary>
+                    <div class="faq__answer">
+                        В среднем полировка седана или кроссовера занимает 1–2 дня — зависит от состояния лака и количества дефектов. Лёгкая полировка делается быстрее, глубокая требует больше времени и внимания к детализации.
+                    </div>
+                </details>
+
+                <details class="faq__item">
+                    <summary class="faq__question">Можно ли полировать машину слишком часто? Не уйдет ли весь лак?</summary>
+                    <div class="faq__answer">
+                        У лакокрасочного покрытия есть запас толщины — мы замеряем её толщиномером перед работой. Лёгкую полировку можно делать регулярно, глубокую — только при необходимости. Мы никогда не работаем «на глаз»: цель — улучшить вид и сохранить ресурс лака.
+                    </div>
+                </details>
+
+                <details class="faq__item">
+                    <summary class="faq__question">Что даёт керамическое покрытие и сколько оно служит?</summary>
+                    <div class="faq__answer">
+                        Керамика создаёт прочный гидрофобный слой: вода скатывается, грязь меньше прилипает, кузов проще мыть. Срок службы — от 12 до 24 месяцев при правильном уходе.
+                    </div>
+                </details>
+
+                <details class="faq__item">
+                    <summary class="faq__question">Защищает ли керамика от сколов и камней?</summary>
+                    <div class="faq__answer">
+                        Нет, керамика не защищает от ударов камней — она работает, как дополнительный слой лака, придает блеск и лёгкую очистку. Для защиты от сколов лучше использовать полиуретановую плёнку: это разные технологии под разные задачи.
+                    </div>
+                </details>
+
+                <details class="faq__item">
+                    <summary class="faq__question">Какие преимущества у масляно‑воскового состава для антикора?</summary>
+                    <div class="faq__answer">
+                        Такой состав глубоко проникает в микропоры и швы, вытесняет влагу, остаётся эластичным при перепадах температур и служит дольше на скрытых surfaces. Он особенно хорош для обработки полостей дверей, порогов и лонжеронов, где важна текучесть и долговременная защита.
+                    </div>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5-Я СТРАНИЦА: ПРЕЙСКУРАНТ -->
+    <section class="prices" id="prices">
+        <div class="container">
+            <h2 class="section-title">ПРЕЙСКУРАНТ</h2>
+            <p class="prices__lead">
+                Базовые цены по типам автомобилей. Там, где указано «от», итоговая сумма зависит от состояния
+                автомобиля и объёма работ — точно посчитаем на бесплатном осмотре и согласуем до начала работ.
+            </p>
+
+            <div class="prices__toolbar">
+                <input type="search" id="priceSearch" class="prices__search"
+                       placeholder="Поиск услуги: керамика, антикор, крыша…" aria-label="Поиск по прайс-листу">
+            </div>
+
+            <div class="prices__tabs" id="priceTabs" role="tablist" aria-label="Разделы прайс-листа"></div>
+            <div class="prices__status" id="priceStatus" hidden></div>
+            <div id="priceContent" aria-live="polite"></div>
+
+            <div class="prices__footer">
+                <p class="prices__footer-text">
+                    Не уверены, что нужно именно вашей машине? Позвоните — за пять минут подберём объём работ
+                    под бюджет и подскажем, с чего лучше начать.
+                </p>
+                <button type="button" class="btn js-open-modal" data-service="Осмотр и расчёт стоимости">Записаться на осмотр</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6-Я СТРАНИЦА: КОНТАКТЫ -->
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <h2 class="section-title">КОНТАКТЫ</h2>
+
+            <div class="contacts__grid">
+                <div class="contacts__card">
+                    <p class="contacts__intro">
+                        Приезжайте на осмотр: посмотрим машину, обсудим объём работ и назовём точную сумму.
+                        Осмотр бесплатный, а записаться заранее удобнее — не придётся ждать.
+                    </p>
+
+                    <!-- Телефон -->
+                    <div class="contact-row">
+                        <div class="contact-row__icon">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-row__label">Телефон</div>
+                            <div class="contact-row__value"><a href="tel:+375293878703">+375 29 387-87-03</a></div>
+                        </div>
+                    </div>
+
+                    <!-- Мессенджеры -->
+                    <div class="contact-row">
+                        <div class="contact-row__icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-row__label">Мессенджеры</div>
+                            <div class="contacts__chips">
+                                <a class="contacts__chip" href="https://t.me/CGP_minsk" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.128.832.942z"/></svg>
+                                    <span>Telegram</span>
+                                </a>
+                                <a class="contacts__chip" href="viber://chat?number=%2B375293878703">
+                                    <svg viewBox="0 0 24 24"><path d="M11.39 0c-5.26 0-9.82 3.12-11.11 7.64-.67 2.37-.36 4.9.82 7.03l-1.05 3.86c-.19.7.43 1.32 1.13 1.13l3.86-1.05c2.13 1.18 4.66 1.49 7.03.82 4.52-1.29 7.64-5.85 7.64-11.11 0-4.6-3.72-8.32-8.32-8.32zm5.82 13.91c-.32.89-1.63 1.76-2.58 1.94-.65.12-1.5.21-4.33-.96-3.62-1.49-5.94-5.18-6.12-5.42-.18-.24-1.47-1.96-1.47-3.74 0-1.78.93-2.65 1.26-3.01.33-.36.72-.45.96-.45.24 0 .48.01.69.01.22 0 .52-.08.81.62.3.72 1.02 2.49 1.11 2.67.09.18.15.39.03.63-.12.24-.18.39-.36.6-.18.21-.38.47-.54.63-.18.18-.37.38-.16.74.21.36.93 1.53 2 2.48 1.38 1.23 2.54 1.62 2.9 1.8.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.81-.18.33.12 2.1 0.99 2.46 1.17.36.18.6.27.69.42.09.15.09.87-.23 1.76z"/></svg>
+                                    <span>Viber</span>
+                                </a>
+                                <a class="contacts__chip" href="https://wa.me/375293878703" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                                    <span>WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Адрес -->
+                    <div class="contact-row">
+                        <div class="contact-row__icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-row__label">Адрес</div>
+                            <div class="contact-row__value">
+                                <a href="https://yandex.by/maps/-/CTWh6D-2" target="_blank" rel="noopener noreferrer">Минск, ул. Монтажников 39/3</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Часы работы: ПРОВЕРЬТЕ и поправьте под свой график -->
+                    <div class="contact-row">
+                        <div class="contact-row__icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-row__label">Часы работы</div>
+                            <div class="contact-row__value">Пн — Пт: 9:00 — 19:00<br>Сб и Вс: по предварительной записи</div>
+                        </div>
+                    </div>
+
+                    <!-- Соцсети -->
+                    <div class="contact-row">
+                        <div class="contact-row__icon">
+                            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-row__label">Соцсети</div>
+                            <div class="contacts__chips">
+                                <a class="contacts__chip" href="https://www.instagram.com/cgp.minsk.by?igsh=djQ2OXV1OHowZno=" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                    <span>Instagram</span>
+                                </a>
+                                <a class="contacts__chip" href="https://t.me/CGP_minsk" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.128.832.942z"/></svg>
+                                    <span>Telegram-канал</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Оплата -->
+                    <div class="contact-row">
+                        <div class="contact-row__icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-row__label">Оплата</div>
+                            <div class="contact-row__value">Наличные, карта, рассрочка 0%</div>
+                        </div>
+                    </div>
+
+                    <div class="contacts__actions">
+                        <a href="tel:+375293878703" class="btn">Позвонить</a>
+                        <button type="button" class="btn js-open-modal" data-service="Заявка из блока контакты">Оставить заявку</button>
+                    </div>
+                </div>
+
+                <div class="contacts__map">
+                    <iframe
+                        src="https://yandex.by/map-widget/v1/?text=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%B6%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2%2039%2F3&z=17"
+                        title="CGP-DETAILING на карте: Минск, ул. Монтажников 39/3"
+                        loading="lazy" allowfullscreen></iframe>
+                    <a class="contacts__map-link" href="https://yandex.by/maps/-/CTWh6D-2" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zM5 5h5V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z"/></svg>
+                        <span>Построить маршрут в Яндекс.Картах</span>
+                    </a>
+
+                    <div class="contacts__advantages">
+                        <div class="contacts__advantage">Осмотр и расчёт стоимости — бесплатно</div>
+                        <div class="contacts__advantage">Сумму и сроки согласуем до начала работ</div>
+                        <div class="contacts__advantage">Можно оставить машину и забрать готовой</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ С МЕССЕНДЖЕРАМИ И СОЦСЕТЯМИ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__logo">CGP-DETAILING</div>
+            <div class="footer__title">Написать нам в мессенджерах & соцсетях:</div>
+            
+            <div class="footer__socials">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/cgp.minsk.by?igsh=djQ2OXV1OHowZno=" target="_blank" rel="noopener noreferrer" class="footer__social-link">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <span>Instagram</span>
+                </a>
+
+                <!-- Telegram -->
+                <a href="https://t.me/CGP_minsk" target="_blank" rel="noopener noreferrer" class="footer__social-link">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.128.832.942z"/></svg>
+                    <span>Telegram @CGP_minsk</span>
+                </a>
+
+                <!-- Viber -->
+                <a href="viber://chat?number=%2B375293878703" class="footer__social-link">
+                    <svg viewBox="0 0 24 24"><path d="M11.39 0c-5.26 0-9.82 3.12-11.11 7.64-.67 2.37-.36 4.9.82 7.03l-1.05 3.86c-.19.7.43 1.32 1.13 1.13l3.86-1.05c2.13 1.18 4.66 1.49 7.03.82 4.52-1.29 7.64-5.85 7.64-11.11 0-4.6-3.72-8.32-8.32-8.32zm5.82 13.91c-.32.89-1.63 1.76-2.58 1.94-.65.12-1.5.21-4.33-.96-3.62-1.49-5.94-5.18-6.12-5.42-.18-.24-1.47-1.96-1.47-3.74 0-1.78.93-2.65 1.26-3.01.33-.36.72-.45.96-.45.24 0 .48.01.69.01.22 0 .52-.08.81.62.3.72 1.02 2.49 1.11 2.67.09.18.15.39.03.63-.12.24-.18.39-.36.6-.18.21-.38.47-.54.63-.18.18-.37.38-.16.74.21.36.93 1.53 2 2.48 1.38 1.23 2.54 1.62 2.9 1.8.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.81-.18.33.12 2.1 0.99 2.46 1.17.36.18.6.27.69.42.09.15.09.87-.23 1.76z"/></svg>
+                    <span>Viber +375 29 387-87-03</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО ЗАПИСИ -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button type="button" class="modal__close" id="modalClose">&times;</button>
+            <h3 class="modal__title">ЗАПИСАТЬСЯ</h3>
+            <p class="modal__subtitle">Заполните форму, и мы свяжемся с вами в течение 15 минут</p>
+            
+            <form id="bookingForm" novalidate>
+                <div class="form-group">
+                    <label class="form-label" for="userName">Имя *</label>
+                    <input type="text" id="userName" class="form-control" placeholder="Ваше имя" required>
+                    <div class="form-hint" id="nameHint">Пожалуйста, укажите имя</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="userPhone">Телефон *</label>
+                    <input type="tel" id="userPhone" class="form-control" placeholder="+375 (29) 000-00-00" required>
+                    <div class="form-hint" id="phoneHint">Введите корректный номер (+375 и 9 цифр)</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="userQuestion">Вопрос или комментарий</label>
+                    <textarea id="userQuestion" class="form-control" placeholder="Укажите марку авто или интересующую услугу..."></textarea>
+                </div>
+
+                <button type="submit" class="btn" id="submitBtn">Отправить заявку</button>
+                <div class="modal__status" id="modalStatus"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- СКРИПТЫ ВАЛИДАЦИИ И ОТПРАВКИ В TELEGRAM -->
+    <script>
+        // ==========================================================
+        // ГЛАВНАЯ НАСТРОЙКА: ПРАЙС-ЛИСТ ИЗ GOOGLE ТАБЛИЦЫ
+        // ----------------------------------------------------------
+        // 1. Импортируйте шаблон price-template.xlsx в Google Таблицы
+        //    (Файл → Импорт → Загрузить) или создайте таблицу вручную
+        //    с колонками: Категория | Описание раздела | Услуга |
+        //    Хэтчбек | Седан | Бизнес-седан | Кроссовер | Минивэн / Джип |
+        //    Цена | Примечание
+        // 2. В Google Таблице: Файл → Поделиться → Опубликовать в интернете →
+        //    выбрать лист «Цены», формат «CSV» → Опубликовать → скопировать ссылку.
+        // 3. Вставьте ссылку в PRICE_CONFIG.csvUrl ниже и загрузите index.html
+        //    на сервер. Цены на сайте будут обновляться автоматически.
+        //
+        // Пока csvUrl пустой — сайт показывает встроенный прайс-лист ниже
+        // (константа DEFAULT_PRICE_ROWS). Правки в таблице менять ничего не
+        // ломают: категории, услуги и колонки подхватываются автоматически.
+        // ==========================================================
+        const PRICE_CONFIG = {
+            // Пример: 'https://docs.google.com/spreadsheets/d/e/2PACX-xxxx/pub?gid=0&single=true&output=csv'
+            csvUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTna9upMC51tmzjpN6690F2hp9pajme6cGIw9wkLV2g7B4xVn7HgWNbUkx_ozXQAianXPOr4cgyJE_D/pub?gid=2145815786&single=true&output=csv',
+            // Сколько минут держать цены в кэше браузера (быстрее открывается сайт)
+            cacheMinutes: 10,
+            // Пометка «демо-прайс» — гаснет сама, как только заполните csvUrl
+            demoNotice: true
+        };
+
+        // ==========================================
+        // НАСТРОЙКИ TELEGRAM БОТА
+        // ==========================================
+        const TELEGRAM_BOT_TOKEN = '8854325292:AAGLSHbLpUbty8MqzCIzdO4yLdt0boTXsH8';
+        const TELEGRAM_CHAT_ID = '1744198751';
+
+        let selectedService = 'Общая запись';
+
+        // ЭЛЕМЕНТЫ DOM
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const bookingForm = document.getElementById('bookingForm');
+        const userNameInput = document.getElementById('userName');
+        const userPhoneInput = document.getElementById('userPhone');
+        const userQuestionInput = document.getElementById('userQuestion');
+        const submitBtn = document.getElementById('submitBtn');
+        const modalStatus = document.getElementById('modalStatus');
+        const openBtns = document.querySelectorAll('.js-open-modal');
+
+        // ОТКРЫТИЕ МОДАЛЬНОГО ОКНА
+        openBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                selectedService = btn.getAttribute('data-service') || 'Общая запись';
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // ЗАКРЫТИЕ МОДАЛЬНОГО ОКНА
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            resetForm();
+        }
+
+        modalClose.addEventListener('click', closeModal);
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
+        });
+
+        // МАСКА И ВАЛИДАЦИЯ ТЕЛЕФОНА +375 (XX) XXX-XX-XX
+        userPhoneInput.addEventListener('focus', () => {
+            if (!userPhoneInput.value) {
+                userPhoneInput.value = '+375 ';
+            }
+        });
+
+        userPhoneInput.addEventListener('input', (e) => {
+            let input = e.target.value;
+            let digits = input.replace(/\D/g, '');
+
+            if (!digits.startsWith('375')) {
+                digits = '375' + digits;
+            }
+
+            digits = digits.substring(0, 12);
+
+            let formatted = '+375';
+            if (digits.length > 3) {
+                formatted += ' (' + digits.substring(3, 5);
+            }
+            if (digits.length >= 5) {
+                formatted += ') ' + digits.substring(5, 8);
+            }
+            if (digits.length >= 8) {
+                formatted += '-' + digits.substring(8, 10);
+            }
+            if (digits.length >= 10) {
+                formatted += '-' + digits.substring(10, 12);
+            }
+
+            e.target.value = formatted;
+            
+            userPhoneInput.classList.remove('error');
+            document.getElementById('phoneHint').style.display = 'none';
+        });
+
+        userNameInput.addEventListener('input', () => {
+            userNameInput.classList.remove('error');
+            document.getElementById('nameHint').style.display = 'none';
+        });
+
+        function resetForm() {
+            bookingForm.reset();
+            userNameInput.classList.remove('error');
+            userPhoneInput.classList.remove('error');
+            document.getElementById('nameHint').style.display = 'none';
+            document.getElementById('phoneHint').style.display = 'none';
+            modalStatus.className = 'modal__status';
+            modalStatus.innerHTML = '';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Отправить заявку';
+        }
+
+        // ОТПРАВКА ФОРМЫ В TELEGRAM
+        bookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nameVal = userNameInput.value.trim();
+            const phoneVal = userPhoneInput.value.trim();
+            const questionVal = userQuestionInput.value.trim();
+
+            let isValid = true;
+
+            if (!nameVal) {
+                userNameInput.classList.add('error');
+                document.getElementById('nameHint').style.display = 'block';
+                isValid = false;
+            }
+
+            const digitsOnly = phoneVal.replace(/\D/g, '');
+            if (digitsOnly.length !== 12) {
+                userPhoneInput.classList.add('error');
+                document.getElementById('phoneHint').style.display = 'block';
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+            modalStatus.className = 'modal__status';
+            modalStatus.style.display = 'none';
+
+            const textMessage = 
+`🔥 *НОВАЯ ЗАЯВКА С САЙТА CGP*
+
+👤 *Имя:* ${nameVal}
+📞 *Телефон:* [${phoneVal}](tel:${digitsOnly})
+🏷 *Услуга:* ${selectedService}
+💬 *Вопрос/Комментарий:* ${questionVal || 'Не указан'}`;
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: textMessage,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.ok) {
+                    modalStatus.className = 'modal__status success';
+                    modalStatus.textContent = 'Спасибо! Ваша заявка успешно отправлена.';
+                    setTimeout(() => {
+                        closeModal();
+                    }, 2500);
+                } else {
+                    throw new Error(result.description || 'Ошибка отправки');
+                }
+            } catch (err) {
+                console.error(err);
+                modalStatus.className = 'modal__status error-msg';
+                modalStatus.textContent = 'Произошла ошибка при отправке. Попробуйте ещё раз или позвоните нам.';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Отправить заявку';
+            }
+        });
+        // ==========================================
+        // ЗАГЛУШКИ ДЛЯ ФОТО
+        // Если файла в папке images нет — показываем аккуратную плашку,
+        // а не «сломанную» картинку.
+        // ==========================================
+        document.querySelectorAll('[data-bg]').forEach((el) => {
+            const src = el.getAttribute('data-bg');
+            if (!src) return;
+
+            const probe = new Image();
+            probe.onerror = () => {
+                const fallback = el.getAttribute('data-bg-fallback');
+                if (fallback) {
+                    el.style.backgroundImage = fallback;
+                } else {
+                    el.classList.add('is-empty');
+                }
+            };
+            probe.src = src;
+        });
+
+        // ==========================================
+        // ВСТРОЕННЫЙ ПРАЙС-ЛИСТ (используется, пока не заполнен PRICE_CONFIG.csvUrl)
+        // Формат строк ровно такой же, как в Google Таблице —
+        // можно скопировать эти строки в таблицу как основу.
+        // ==========================================
+        const DEFAULT_PRICE_ROWS = [
+            ['Категория', 'Описание раздела', 'Услуга', 'Хэтчбек', 'Седан', 'Бизнес-седан', 'Кроссовер', 'Минивэн / Джип', 'Цена', 'Примечание'],
+
+            // 1. Полировка и защита ЛКП
+            ['Полировка и защита ЛКП', 'Вернём кузову блеск и защитим лак: чистка ЛКП, лёгкая или восстановительная полировка, твёрдый воск либо керамика.', 'Лёгкая полировка кузова', 500, 550, 600, 700, '', '', ''],
+            ['Полировка и защита ЛКП', '', 'Восстановительная полировка кузова', 600, 700, 800, 900, '', '', 'Убираем царапины, «паутинку» и голограммы'],
+            ['Полировка и защита ЛКП', '', 'Защитное покрытие: твёрдый воск', 100, 150, '', 200, '', '', ''],
+            ['Полировка и защита ЛКП', '', 'Защитное покрытие: керамика', 450, 500, '', 600, '', '', 'Срок службы 12–24 месяца'],
+            ['Полировка и защита ЛКП', '', 'Чистка лакокрасочного покрытия', '', '', '', '', '', 250, ''],
+            ['Полировка и защита ЛКП', '', 'Чистка колёсных дисков со снятием', '', '', '', '', '', 'от 250', ''],
+            ['Полировка и защита ЛКП', '', 'Чистка подкапотного пространства', '', '', '', '', '', 150, ''],
+            ['Полировка и защита ЛКП', '', 'Чистка и мойка днища: седан / хэтчбек', '', '', '', '', '', 'от 150', ''],
+            ['Полировка и защита ЛКП', '', 'Чистка и мойка днища: кроссовер / универсал', '', '', '', '', '', 'от 200', ''],
+            ['Полировка и защита ЛКП', '', 'Чистка и мойка днища: минивэн / джип', '', '', '', '', '', 'от 250', ''],
+            ['Полировка и защита ЛКП', '', 'Снятие / установка защиты днища', '', '', '', '', '', 'от 50', ''],
+            ['Полировка и защита ЛКП', '', 'Снятие / установка защиты днища и арок', '', '', '', '', '', 'от 150', ''],
+            ['Полировка и защита ЛКП', '', '«Антидождь»: лобовое и передние стёкла', '', '', '', '', '', 100, 'Включая абразивную чистку стекла'],
+            ['Полировка и защита ЛКП', '', '«Антидождь»: задние стёкла', '', '', '', '', '', 50, ''],
+            ['Полировка и защита ЛКП', '', '«Антидождь»: дополнительный слой', '', '', '', '', '', 50, ''],
+
+            // 2. Химчистка салона
+            ['Химчистка салона', 'Салон станет свежим и без запаха: полный комплекс или отдельные элементы, озонация, уход за кожей.', 'Уборка салона с элементами химчистки', 250, 250, 250, 250, 250, '', ''],
+            ['Химчистка салона', '', 'Химчистка (полный комплекс)', 'от 500', 'от 500', 'от 500', 'от 600', 'от 800', '', ''],
+            ['Химчистка салона', '', 'Химчистка салона после затопления', 'от 1000', 'от 1000', 'от 1000', 'от 1000', 'от 1000', '', ''],
+            ['Химчистка салона', '', 'Химчистка одного кресла', '', '', '', '', '', 'от 50', ''],
+            ['Химчистка салона', '', 'Химчистка заднего дивана', '', '', '', '', '', 'от 75', ''],
+            ['Химчистка салона', '', 'Химчистка дверных карт (1 шт.)', '', '', '', '', '', 'от 25', ''],
+            ['Химчистка салона', '', 'Озонация салона', '', '', '', '', '', 50, 'Убирает запахи табака, животных и плесени'],
+            ['Химчистка салона', '', 'Чистка и пропитка кожи: салон', '', '', '', '', '', 275, ''],
+            ['Химчистка салона', '', 'Чистка и пропитка кожи: сиденье', '', '', '', '', '', 60, ''],
+            ['Химчистка салона', '', 'Чистка и пропитка кожи: задний диван', '', '', '', '', '', 80, ''],
+            ['Химчистка салона', '', 'Чистка и пропитка кожи: руль', '', '', '', '', '', 50, ''],
+
+            // 3. Антикоррозийная обработка
+            ['Антикоррозийная обработка', 'Обрабатываем днище, скрытые полости, арки, пороги, низы дверей, кромки капота и крышки багажника, подрамники и металлические элементы.', 'ДВС (бензин / дизель)', 'от 850', 'от 950', 'от 950', 'от 900', 'от 1000', '', 'Масляно-восковой состав, остаётся эластичным'],
+            ['Антикоррозийная обработка', '', 'Электромобили', 'от 800', 'от 900', 'от 900', 'от 850', 'от 950', '', ''],
+
+            // 4. Шумоизоляция
+            ['Шумоизоляция', 'В салоне станет тише: двери, арки и подкрылки, пол, багажник, капот и потолок — зонами или целиком.', 'Двери (4 шт.)', '', '', '', '', '', '800–900', ''],
+            ['Шумоизоляция', '', 'Подкрылки (4 шт.)', '', '', '', '', '', '450–550', ''],
+            ['Шумоизоляция', '', 'Арки + подкрылки', '', '', '', '', '', '850–950', ''],
+            ['Шумоизоляция', '', 'Пол салона', '', '', '', '', '', '900–1000', ''],
+            ['Шумоизоляция', '', 'Багажник', '', '', '', '', '', '850–950', ''],
+            ['Шумоизоляция', '', 'Задняя полка седана', '', '', '', '', '', '350–400', ''],
+            ['Шумоизоляция', '', 'Дверь багажника', '', '', '', '', '', 150, ''],
+            ['Шумоизоляция', '', 'Капот', '', '', '', '', '', 150, ''],
+            ['Шумоизоляция', '', 'Потолок', '', '', '', '', '', '500–600', ''],
+
+            // 5. Антигравийная плёнка
+            ['Антигравийная плёнка (оклейка)', 'Убережём краску от сколов и пескоструя: капот, бамперы, фары, стойки, крыша, двери и кантики — частично или целиком.', 'Капот, частично', '', '', '', '', '', 'от 300', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Капот, целиком', '', '', '', '', '', 'от 800', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Крылья, частично (1 шт.)', '', '', '', '', '', 'от 300', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Крылья, цельно (пара)', '', '', '', '', '', 'от 600', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Передний бампер', '', '', '', '', '', 'от 850', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Задний бампер целиком', '', '', '', '', '', 'от 850', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Фары, комплект', '', '', '', '', '', 'от 180', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Фары притемнённые', '', '', '', '', '', 'от 250', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Стойки лобового стекла', '', '', '', '', '', 'от 150', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Задняя зона погрузки', '', '', '', '', '', 'от 150', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Крыша над лобовым стеклом', '', '', '', '', '', 'от 150', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Крыша целиком', '', '', '', '', '', 'от 500', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Дверь (1 шт.)', '', '', '', '', '', 'от 450', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Крышки зеркал', '', '', '', '', '', 'от 150', ''],
+            ['Антигравийная плёнка (оклейка)', '', 'Антиманикюр', '', '', '', '', '', 50, 'Защита зон под ручками дверей'],
+            ['Антигравийная плёнка (оклейка)', '', 'Кантики дверей (4 шт.)', '', '', '', '', '', 50, ''],
+
+            // 6. Тонирование, антихром и стайлинг
+            ['Тонирование, антихром и стайлинг', 'Соберём внешний вид под ваш вкус: тонировка стёкол, антихром молдингов, крыша в чёрный полиуретан.', 'Тонировка стёкол (зависит от типа авто)', '', '', '', '', '', 'от 300', 'Атермальные и премиальные плёнки'],
+            ['Тонирование, антихром и стайлинг', '', 'Тонировка: переднее стекло (1 шт.)', '', '', '', '', '', 100, ''],
+            ['Тонирование, антихром и стайлинг', '', 'Тонировка: передние стёкла (комплект)', '', '', '', '', '', 80, ''],
+            ['Тонирование, антихром и стайлинг', '', 'Антихром оконных молдингов', '', '', '', '', '', 'от 450', ''],
+            ['Тонирование, антихром и стайлинг', '', 'Оклейка крыши в чёрный полиуретан', '', '', '', '', '', 'от 900', ''],
+
+            // 7. Локальный ремонт ЛКП и оптика
+            ['Локальный ремонт ЛКП и оптика', 'Аккуратно уберём точечные сколы, глубокие царапины и потёртости, вернём прозрачность фарам.', 'Локальный ремонт ЛКП (1 элемент)', '', '', '', '', '', '100–250', 'Без полной перекраски детали'],
+            ['Локальный ремонт ЛКП и оптика', '', 'Восстановление оптики (фар)', '', '', '', '', '', 'от 350', '']
+        ];
+
+        // ==========================================
+        // ЛОГИКА ПРАЙС-ЛИСТА
+        // ==========================================
+        (function () {
+            const RESERVED = [
+                'категория', 'раздел', 'категории', 'описание раздела', 'описание',
+                'услуга', 'наименование', 'наименование услуги', 'название',
+                'цена', 'стоимость', 'примечание', 'комментарий', 'порядок'
+            ];
+            const CAT_KEYS = ['категория', 'раздел', 'категории'];
+            const NAME_KEYS = ['услуга', 'наименование', 'наименование услуги', 'название'];
+            const PRICE_KEYS = ['цена', 'стоимость'];
+            const NOTE_KEYS = ['примечание', 'комментарий'];
+            const DESC_KEYS = ['описание раздела', 'описание'];
+
+            const tabsEl = document.getElementById('priceTabs');
+            const contentEl = document.getElementById('priceContent');
+            const statusEl = document.getElementById('priceStatus');
+            const searchEl = document.getElementById('priceSearch');
+
+            if (!tabsEl || !contentEl) return;
+
+            let MODEL = [];
+            let ACTIVE = 0;
+
+            // ---------- РАЗБОР CSV ----------
+            function detectDelimiter(line) {
+                const variants = [',', ';', '\t'];
+                let best = ',';
+                let bestCount = 0;
+                variants.forEach((d) => {
+                    const count = line.split(d).length - 1;
+                    if (count > bestCount) { bestCount = count; best = d; }
+                });
+                return best;
+            }
+
+            function parseCSV(text) {
+                const clean = String(text).replace(/^\uFEFF/, '');
+                const delim = detectDelimiter(clean.split(/\r?\n/)[0] || '');
+                const rows = [];
+                let row = [];
+                let cell = '';
+                let inQuotes = false;
+
+                for (let i = 0; i < clean.length; i++) {
+                    const ch = clean[i];
+                    if (inQuotes) {
+                        if (ch === '"') {
+                            if (clean[i + 1] === '"') { cell += '"'; i++; } else { inQuotes = false; }
+                        } else {
+                            cell += ch;
+                        }
+                    } else if (ch === '"') {
+                        inQuotes = true;
+                    } else if (ch === delim) {
+                        row.push(cell); cell = '';
+                    } else if (ch === '\n') {
+                        row.push(cell); rows.push(row); row = []; cell = '';
+                    } else if (ch !== '\r') {
+                        cell += ch;
+                    }
+                }
+                row.push(cell);
+                rows.push(row);
+
+                return rows.filter((r) => r.some((c) => String(c).trim() !== ''));
+            }
+
+            // ---------- ПОСТРОЕНИЕ МОДЕЛИ ----------
+            function findCol(headerLower, keys) {
+                for (let i = 0; i < keys.length; i++) {
+                    const idx = headerLower.indexOf(keys[i]);
+                    if (idx !== -1) return idx;
+                }
+                return -1;
+            }
+
+            function buildModel(rows) {
+                if (!rows || rows.length < 2) return [];
+
+                const header = rows[0].map((h) => String(h == null ? '' : h).trim());
+                const lower = header.map((h) => h.toLowerCase());
+
+                const iCat = findCol(lower, CAT_KEYS);
+                const iName = findCol(lower, NAME_KEYS);
+                const iPrice = findCol(lower, PRICE_KEYS);
+                const iNote = findCol(lower, NOTE_KEYS);
+                const iDesc = findCol(lower, DESC_KEYS);
+
+                if (iName === -1) return [];
+
+                // Любая колонка, которой нет в служебном списке, считается
+                // колонкой с ценой (тип авто). Новые колонки подхватятся сами.
+                const valueCols = [];
+                header.forEach((h, i) => {
+                    if (!h || RESERVED.indexOf(lower[i]) !== -1) return;
+                    valueCols.push({ index: i, title: h });
+                });
+
+                const groups = [];
+                const byTitle = {};
+
+                for (let r = 1; r < rows.length; r++) {
+                    const row = rows[r];
+                    const cell = (idx) => (idx === -1 ? '' : String(row[idx] == null ? '' : row[idx]).trim());
+
+                    const name = cell(iName);
+                    const catTitle = cell(iCat) || 'Прочие услуги';
+                    if (!name && !cell(iCat)) continue;
+
+                    let group = byTitle[catTitle];
+                    if (!group) {
+                        group = { title: catTitle, desc: '', items: [] };
+                        byTitle[catTitle] = group;
+                        groups.push(group);
+                    }
+                    if (iDesc !== -1 && !group.desc) {
+                        const d = cell(iDesc);
+                        if (d) group.desc = d;
+                    }
+                    if (!name) continue;
+
+                    const values = {};
+                    valueCols.forEach((vc) => {
+                        const val = cell(vc.index);
+                        if (val) values[vc.title] = val;
+                    });
+
+                    group.items.push({ name, values, price: cell(iPrice), note: cell(iNote) });
+                }
+
+                return groups.filter((g) => g.items.length);
+            }
+
+            // ---------- РАЗМЕТКА ----------
+            function esc(value) {
+                return String(value == null ? '' : value)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
+            }
+
+            function fmt(value) {
+                const v = String(value == null ? '' : value).trim();
+                if (!v) return '';
+                // «500» из Google Таблиц превращаем в «500 р.», «от 500» оставляем как есть
+                if (/^\d+([.,]\d+)?$/.test(v)) return v.replace('.', ',') + ' р.';
+                return v;
+            }
+
+            function noteHtml(item) {
+                return item.note ? '<span class="price-table__note">' + esc(item.note) + '</span>' : '';
+            }
+
+            function splitItems(items) {
+                const cols = [];
+                items.forEach((it) => {
+                    Object.keys(it.values).forEach((k) => {
+                        if (cols.indexOf(k) === -1) cols.push(k);
+                    });
+                });
+                const matrixItems = items.filter((it) => cols.some((c) => it.values[c]));
+                const listItems = items.filter((it) => !cols.some((c) => it.values[c]));
+                return { cols, matrixItems, listItems };
+            }
+
+            function matrixHtml(cols, items) {
+                if (!items.length) return '';
+                const head = ['<th>Услуга</th>']
+                    .concat(cols.map((c) => '<th>' + esc(c) + '</th>'))
+                    .join('');
+
+                const body = items.map((it) => {
+                    const cells = cols.map((c) => {
+                        const v = fmt(it.values[c]);
+                        return v
+                            ? '<td class="price-table__value" data-label="' + esc(c) + '">' + esc(v) + '</td>'
+                            : '<td class="price-table__value is-empty" data-label="' + esc(c) + '">—</td>';
+                    }).join('');
+                    return '<tr><td class="price-table__name" data-label="Услуга">' + esc(it.name) + noteHtml(it) + '</td>' + cells + '</tr>';
+                }).join('');
+
+                return '<div class="price-table-wrap"><table class="price-table"><thead><tr>' + head +
+                       '</tr></thead><tbody>' + body + '</tbody></table></div>';
+            }
+
+            function listHtml(items) {
+                if (!items.length) return '';
+                const body = items.map((it) => {
+                    const v = fmt(it.price) || 'по запросу';
+                    return '<tr><td class="price-table__name" data-label="Услуга">' + esc(it.name) + noteHtml(it) +
+                           '</td><td class="price-table__value" data-label="Цена">' + esc(v) + '</td></tr>';
+                }).join('');
+
+                return '<div class="price-table-wrap"><table class="price-table"><thead><tr>' +
+                       '<th>Услуга</th><th>Цена</th></tr></thead><tbody>' + body + '</tbody></table></div>';
+            }
+
+            function groupHtml(group, items) {
+                const parts = splitItems(items);
+                let html = '';
+                if (parts.matrixItems.length) html += matrixHtml(parts.cols, parts.matrixItems);
+                if (parts.listItems.length) {
+                    if (parts.matrixItems.length) html += '<div class="price-group__subtitle">Дополнительно</div>';
+                    html += listHtml(parts.listItems);
+                }
+                return html;
+            }
+
+            // ---------- ОТРИСОВКА ----------
+            function renderTabs() {
+                tabsEl.innerHTML = MODEL.map((g, i) =>
+                    '<button type="button" class="prices__tab' + (i === ACTIVE ? ' active' : '') +
+                    '" role="tab" aria-selected="' + (i === ACTIVE) + '" data-index="' + i + '">' +
+                    esc(g.title) + '</button>'
+                ).join('');
+            }
+
+            function renderContent() {
+                const query = String(searchEl.value || '').trim().toLowerCase();
+
+                if (query) {
+                    let html = '';
+                    let found = 0;
+                    MODEL.forEach((g) => {
+                        const items = g.items.filter((it) =>
+                            (it.name + ' ' + g.title + ' ' + (it.note || '')).toLowerCase().indexOf(query) !== -1);
+                        if (!items.length) return;
+                        found += items.length;
+                        html += '<div class="price-group"><h3 class="price-group__title">' + esc(g.title) + '</h3>' +
+                                groupHtml(g, items) + '</div>';
+                    });
+                    contentEl.innerHTML = found ? html
+                        : '<div class="prices__empty">По запросу ничего не нашлось. Попробуйте другое слово или позвоните нам — подскажем.</div>';
+                    return;
+                }
+
+                const group = MODEL[ACTIVE];
+                if (!group) {
+                    contentEl.innerHTML = '<div class="prices__empty">Прайс-лист временно недоступен.</div>';
+                    return;
+                }
+
+                contentEl.innerHTML = '<div class="price-group">' +
+                    (group.desc ? '<p class="price-group__desc">' + esc(group.desc) + '</p>' : '') +
+                    groupHtml(group, group.items) + '</div>';
+            }
+
+            function setStatus(text) {
+                if (!text) {
+                    statusEl.hidden = true;
+                    statusEl.textContent = '';
+                    return;
+                }
+                statusEl.hidden = false;
+                statusEl.textContent = text;
+            }
+
+            // ---------- ЗАГРУЗКА ИЗ GOOGLE ТАБЛИЦЫ ----------
+            async function loadRows() {
+                const url = String(PRICE_CONFIG.csvUrl || '').trim();
+                if (!url) return { rows: DEFAULT_PRICE_ROWS, source: 'default' };
+
+                const cacheKey = 'cgp_price_rows_v1';
+                try {
+                    const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+                    if (cached && cached.url === url && Array.isArray(cached.rows) &&
+                        Date.now() - cached.t < PRICE_CONFIG.cacheMinutes * 60000) {
+                        return { rows: cached.rows, source: 'sheet' };
+                    }
+                } catch (e) { /* кэш недоступен — просто грузим заново */ }
+
+                try {
+                    const res = await fetch(url, { cache: 'no-store' });
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    const rows = parseCSV(await res.text());
+                    if (rows.length < 2) throw new Error('таблица пуста');
+                    try {
+                        localStorage.setItem(cacheKey, JSON.stringify({ t: Date.now(), url, rows }));
+                    } catch (e) { /* приватный режим — не страшно */ }
+                    return { rows, source: 'sheet' };
+                } catch (err) {
+                    console.warn('[Прайс] не удалось загрузить Google Таблицу:', err);
+                    return { rows: DEFAULT_PRICE_ROWS, source: 'error' };
+                }
+            }
+
+            tabsEl.addEventListener('click', (e) => {
+                const btn = e.target.closest('.prices__tab');
+                if (!btn) return;
+                ACTIVE = Number(btn.getAttribute('data-index')) || 0;
+                searchEl.value = '';
+                renderTabs();
+                renderContent();
+            });
+
+            let searchTimer = null;
+            searchEl.addEventListener('input', () => {
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(renderContent, 150);
+            });
+
+            (async function init() {
+                const result = await loadRows();
+                MODEL = buildModel(result.rows);
+
+                if (!MODEL.length) {
+                    MODEL = buildModel(DEFAULT_PRICE_ROWS);
+                    setStatus('В таблице не найдена колонка «Услуга» — показан встроенный прайс-лист.');
+                } else if (result.source === 'error') {
+                    setStatus('Не удалось обновить цены из Google Таблицы — показан последний доступный прайс.');
+                } else if (result.source === 'default' && PRICE_CONFIG.demoNotice) {
+                    setStatus('Прайс-лист демонстрационный: цены нужно проверить и заполнить под себя.');
+                }
+
+                ACTIVE = 0;
+                renderTabs();
+                renderContent();
+            })();
+        })();
+    </script>
+
+</body>
+</html>
